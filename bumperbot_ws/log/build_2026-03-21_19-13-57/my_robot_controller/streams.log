@@ -1,0 +1,56 @@
+[0.976s] Invoking command in '/home/unknown/ROS2_Workspaces/bumperbot_ws/src/my_robot_controller': PYTHONPATH=/home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_robot_controller build --build-base /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build install --record /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/install.log --single-version-externally-managed install_data
+[1.294s] running egg_info
+[1.295s] creating ../../build/my_robot_controller/my_robot_controller.egg-info
+[1.295s] writing ../../build/my_robot_controller/my_robot_controller.egg-info/PKG-INFO
+[1.295s] writing dependency_links to ../../build/my_robot_controller/my_robot_controller.egg-info/dependency_links.txt
+[1.295s] writing entry points to ../../build/my_robot_controller/my_robot_controller.egg-info/entry_points.txt
+[1.295s] writing requirements to ../../build/my_robot_controller/my_robot_controller.egg-info/requires.txt
+[1.296s] writing top-level names to ../../build/my_robot_controller/my_robot_controller.egg-info/top_level.txt
+[1.296s] writing manifest file '../../build/my_robot_controller/my_robot_controller.egg-info/SOURCES.txt'
+[1.298s] reading manifest file '../../build/my_robot_controller/my_robot_controller.egg-info/SOURCES.txt'
+[1.299s] writing manifest file '../../build/my_robot_controller/my_robot_controller.egg-info/SOURCES.txt'
+[1.299s] running build
+[1.299s] running build_py
+[1.299s] creating /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build
+[1.299s] creating /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build/lib
+[1.299s] creating /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build/lib/my_robot_controller
+[1.299s] copying my_robot_controller/draw_circle.py -> /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build/lib/my_robot_controller
+[1.299s] copying my_robot_controller/__init__.py -> /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build/lib/my_robot_controller
+[1.299s] copying my_robot_controller/turtle_control.py -> /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build/lib/my_robot_controller
+[1.300s] copying my_robot_controller/auto_bot.py -> /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build/lib/my_robot_controller
+[1.300s] copying my_robot_controller/my_first_node.py -> /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build/lib/my_robot_controller
+[1.300s] copying my_robot_controller/pose_sub.py -> /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build/lib/my_robot_controller
+[1.301s] running install
+[1.301s] running install_lib
+[1.302s] creating /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller
+[1.302s] copying /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build/lib/my_robot_controller/draw_circle.py -> /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller
+[1.303s] copying /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build/lib/my_robot_controller/__init__.py -> /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller
+[1.303s] copying /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build/lib/my_robot_controller/turtle_control.py -> /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller
+[1.303s] copying /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build/lib/my_robot_controller/auto_bot.py -> /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller
+[1.303s] copying /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build/lib/my_robot_controller/my_first_node.py -> /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller
+[1.303s] copying /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build/lib/my_robot_controller/pose_sub.py -> /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller
+[1.303s] byte-compiling /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller/draw_circle.py to draw_circle.cpython-310.pyc
+[1.304s] byte-compiling /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller/__init__.py to __init__.cpython-310.pyc
+[1.304s] byte-compiling /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller/turtle_control.py to turtle_control.cpython-310.pyc
+[1.305s] byte-compiling /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller/auto_bot.py to auto_bot.cpython-310.pyc
+[1.305s] byte-compiling /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller/my_first_node.py to my_first_node.cpython-310.pyc
+[1.306s] byte-compiling /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller/pose_sub.py to pose_sub.cpython-310.pyc
+[1.306s] running install_data
+[1.306s] creating /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/share/ament_index
+[1.306s] creating /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/share/ament_index/resource_index
+[1.307s] creating /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/share/ament_index/resource_index/packages
+[1.307s] copying resource/my_robot_controller -> /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/share/ament_index/resource_index/packages
+[1.307s] copying package.xml -> /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/share/my_robot_controller
+[1.307s] creating /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/share/my_robot_controller/launch
+[1.307s] copying launch/first_launch.py -> /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/share/my_robot_controller/launch
+[1.307s] copying launch/turtle_with_controll.py -> /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/share/my_robot_controller/launch
+[1.307s] running install_egg_info
+[1.310s] Copying ../../build/my_robot_controller/my_robot_controller.egg-info to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller-0.0.0-py3.10.egg-info
+[1.311s] running install_scripts
+[1.338s] Installing auto_bot script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/my_robot_controller
+[1.338s] Installing draw_circle script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/my_robot_controller
+[1.338s] Installing test_node script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/my_robot_controller
+[1.338s] Installing the_poser script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/my_robot_controller
+[1.339s] Installing wasd_controller script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/my_robot_controller
+[1.339s] writing list of installed files to '/home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/install.log'
+[1.366s] Invoked command in '/home/unknown/ROS2_Workspaces/bumperbot_ws/src/my_robot_controller' returned '0': PYTHONPATH=/home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/unknown/ROS2_Workspaces/bumperbot_ws/install/my_robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_robot_controller build --build-base /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/build install --record /home/unknown/ROS2_Workspaces/bumperbot_ws/build/my_robot_controller/install.log --single-version-externally-managed install_data

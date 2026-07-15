@@ -1,0 +1,151 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-4cddf385e69d7ac16270.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "cpp_folder",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "cpp_folder_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cpp_folder_uninstall-23d4ab294f4eb6d4616f.json",
+					"name" : "cpp_folder_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dynamic_tf_kinematics::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dynamic_tf_kinematics-69de36dbe2b6ace533c8.json",
+					"name" : "dynamic_tf_kinematics",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "euler_to_quaternion::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-euler_to_quaternion-8789ea3161557445666b.json",
+					"name" : "euler_to_quaternion",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "simple_parameter::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-simple_parameter-80e4dc952a75930ea528.json",
+					"name" : "simple_parameter",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "simple_service_client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-simple_service_client-49b5b29bb7d622d54aae.json",
+					"name" : "simple_service_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "simple_service_server::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-simple_service_server-78c407e44cf73ece1a85.json",
+					"name" : "simple_service_server",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "simple_tf_kinematics::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-simple_tf_kinematics-183a10abb7833fd26782.json",
+					"name" : "simple_tf_kinematics",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "simple_tf_service::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-simple_tf_service-7a390276702461c04475.json",
+					"name" : "simple_tf_service",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "turtle_cpp_publisher::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-turtle_cpp_publisher-cc86ff9710f1247e63d9.json",
+					"name" : "turtle_cpp_publisher",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "turtlesim_kinematics::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-turtlesim_kinematics-90d926b26b1e84b623a1.json",
+					"name" : "turtlesim_kinematics",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-a2347d399151b6459115.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/unknown/ROS2_Workspaces/bumperbot_ws/build/cpp_folder",
+		"source" : "/home/unknown/ROS2_Workspaces/bumperbot_ws/src/cpp_folder"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

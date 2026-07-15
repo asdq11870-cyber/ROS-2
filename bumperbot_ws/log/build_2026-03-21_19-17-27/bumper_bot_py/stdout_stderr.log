@@ -1,0 +1,29 @@
+running egg_info
+writing ../../build/bumper_bot_py/bumper_bot_py.egg-info/PKG-INFO
+writing dependency_links to ../../build/bumper_bot_py/bumper_bot_py.egg-info/dependency_links.txt
+writing entry points to ../../build/bumper_bot_py/bumper_bot_py.egg-info/entry_points.txt
+writing requirements to ../../build/bumper_bot_py/bumper_bot_py.egg-info/requires.txt
+writing top-level names to ../../build/bumper_bot_py/bumper_bot_py.egg-info/top_level.txt
+reading manifest file '../../build/bumper_bot_py/bumper_bot_py.egg-info/SOURCES.txt'
+writing manifest file '../../build/bumper_bot_py/bumper_bot_py.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+running install_egg_info
+removing '/home/unknown/ROS2_Workspaces/bumperbot_ws/install/bumper_bot_py/lib/python3.10/site-packages/bumper_bot_py-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/bumper_bot_py/bumper_bot_py.egg-info to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/bumper_bot_py/lib/python3.10/site-packages/bumper_bot_py-0.0.0-py3.10.egg-info
+running install_scripts
+Installing dynamic_tf_kinematics script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/bumper_bot_py/lib/bumper_bot_py
+Installing euler_to_quaternion script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/bumper_bot_py/lib/bumper_bot_py
+Installing simple_parameter script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/bumper_bot_py/lib/bumper_bot_py
+Installing simple_publisher script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/bumper_bot_py/lib/bumper_bot_py
+Installing simple_service_client script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/bumper_bot_py/lib/bumper_bot_py
+Installing simple_service_server script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/bumper_bot_py/lib/bumper_bot_py
+Installing simple_subscriber script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/bumper_bot_py/lib/bumper_bot_py
+Installing simple_tf_kinematics script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/bumper_bot_py/lib/bumper_bot_py
+Installing simple_tf_service script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/bumper_bot_py/lib/bumper_bot_py
+Installing turtlesim_kinematics script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/bumper_bot_py/lib/bumper_bot_py
+Installing turtlesim_rotation script to /home/unknown/ROS2_Workspaces/bumperbot_ws/install/bumper_bot_py/lib/bumper_bot_py
+writing list of installed files to '/home/unknown/ROS2_Workspaces/bumperbot_ws/build/bumper_bot_py/install.log'
