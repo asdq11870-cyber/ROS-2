@@ -1,0 +1,15 @@
+# ROS 2 / colcon generated files
+**/build/
+**/install/
+**/log/
+
+# VS Code
+.vscode/
+
+# Python
+**/__pycache__/
+*.py[cod]
+
+# Linux
+.DS_Store
+Thumbs.db
