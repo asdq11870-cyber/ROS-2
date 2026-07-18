@@ -1,9 +1,0 @@
-setup.py
-bumperbot_localisation/__init__.py
-bumperbot_localisation/imu_republisher.py
-bumperbot_localisation/kalman_filter.py
-bumperbot_localisation/odometry_motion_model.py
-bumperbot_localisation.egg-info/PKG-INFO
-bumperbot_localisation.egg-info/SOURCES.txt
-bumperbot_localisation.egg-info/dependency_links.txt
-bumperbot_localisation.egg-info/top_level.txt

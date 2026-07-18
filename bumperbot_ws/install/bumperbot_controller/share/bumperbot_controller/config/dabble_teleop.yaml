@@ -1,5 +1,0 @@
-dabble_teleop:
-  ros__parameters:
-    udp_port: 5555
-    linear_scale: 1.0
-    angular_scale: 1.0

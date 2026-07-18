@@ -1,7 +1,0 @@
-[console_scripts]
-auto_bot = my_robot_controller.auto_bot:main
-draw_circle = my_robot_controller.draw_circle:main
-test_node = my_robot_controller.my_first_node:main
-the_poser = my_robot_controller.pose_sub:main
-wasd_controller = my_robot_controller.turtle_control:main
-
