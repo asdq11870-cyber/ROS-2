@@ -15,6 +15,11 @@ find_package(rclcpp REQUIRED)
 # find_package(<dependency> REQUIRED)
 ament_python_install_package(${PROJECT_NAME})
 
+install(
+  DIRECTORY meshes urdf launch rviz
+  DESTINATION share/${PROJECT_NAME}
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
