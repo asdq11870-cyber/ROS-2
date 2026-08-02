@@ -16,7 +16,7 @@ find_package(rclcpp REQUIRED)
 ament_python_install_package(${PROJECT_NAME})
 
 install(
-  DIRECTORY meshes urdf launch rviz
+  DIRECTORY meshes urdf launch rviz worlds
   DESTINATION share/${PROJECT_NAME}
 )
 

@@ -1,4 +1,9 @@
-<robot name="quadcopter">
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="quadcopter">
+
+    <xacro:arg name="is_ignition" default="true"/>
+    <xacro:include filename="$(find drone_description)/urdf/quadcopter_gazebo.xacro"/>
 
     <link name="base_footprint"/>
     <link name="arm_link">
@@ -491,7 +496,7 @@
     <joint name="base_top_joint" type="fixed">
         <origin xyz="-0.0814963 0.0335523 0.0258382" rpy="-3.14159 2.13437e-16 -2.39915" />
         <axis xyz="0 0 1" />
-        <parent link="base_link" />
+        <parent link="base_footprint" />
         <child link="top_link" />
     </joint>
     <joint name="motor1_spinner1_joint" type="continuous">
@@ -524,7 +529,7 @@
         <parent link="base_link" />
         <child link="arm_link_3" />
     </joint>
-    <joint name="rear_left_arm_motor4_joint" type="continuous">
+    <joint name="rear_left_arm_motor4_joint" type="fixed">
         <origin xyz="-0.0622254 0.0537401 0.0045" rpy="-6.38197e-33 1.54074e-32 -0.785398" />
         <axis xyz="0 0 -1" />
         <parent link="arm_link_3" />
@@ -548,7 +553,7 @@
         <parent link="base_link" />
         <child link="arm_link_2" />
     </joint>
-    <joint name="rear_right_arm_motor3_joint" type="continuous">
+    <joint name="rear_right_arm_motor3_joint" type="fixed">
         <origin xyz="-0.0537401 0.0622254 0.0045" rpy="-4.11167e-32 3.14719e-32 0.785398" />
         <axis xyz="0 0 -1" />
         <parent link="arm_link_2" />
@@ -572,25 +577,25 @@
         <parent link="spacer_link_2" />
         <child link="board_link_1" />
     </joint>
-    <joint name="spinner1_propeller1_joint" type="continuous">
+    <joint name="spinner1_propeller1_joint" type="fixed">
         <origin xyz="0 0 0.0035" rpy="0 -0 0" />
         <axis xyz="0 0 -1" />
         <parent link="spinner_link_3" />
         <child link="propeller_link_2" />
     </joint>
-    <joint name="spinner2_propeller2_joint" type="continuous">
+    <joint name="spinner2_propeller2_joint" type="fixed">
         <origin xyz="-6.93889e-18 0 0.0035" rpy="-8.55285e-50 2.46519e-32 -6.93889e-18" />
         <axis xyz="0 0 -1" />
         <parent link="spinner_link_1" />
         <child link="propeller_link_1" />
     </joint>
-    <joint name="spinner3_propeller3_joint" type="continuous">
+    <joint name="spinner3_propeller3_joint" type="fixed">
         <origin xyz="0 2.77556e-17 0.0035" rpy="0 -0 2.902e-33" />
         <axis xyz="0 0 -1" />
         <parent link="spinner_link_2" />
         <child link="propeller_link_3" />
     </joint>
-    <joint name="spinner4_propeller4_joint" type="continuous">
+    <joint name="spinner4_propeller4_joint" type="fixed">
         <origin xyz="0 0 0.0035" rpy="1.2326e-32 1.2326e-32 -6.93889e-18" />
         <axis xyz="0 0 -1" />
         <parent link="spinner_link" />
@@ -602,7 +607,7 @@
         <parent link="arm_link" />
         <child link="base_link" />
     </joint>
-    <joint name="top_left_arm_motor1_joint" type="continuous">
+    <joint name="top_left_arm_motor1_joint" type="fixed">
         <origin xyz="-0.006 0.082 -0.0155" rpy="2.09423e-16 2.59744e-16 3.14159" />
         <axis xyz="0 0 -1" />
         <parent link="arm_link" />
@@ -626,7 +631,7 @@
         <parent link="base_link" />
         <child link="arm_link_1" />
     </joint>
-    <joint name="top_right_arm_motor2_joint" type="continuous">
+    <joint name="top_right_arm_motor2_joint" type="fixed">
         <origin xyz="0.0537401 -0.0622254 0.0045" rpy="-1.02112e-32 2.46519e-32 -0.785398" />
         <axis xyz="0 0 -1" />
         <parent link="arm_link_1" />
