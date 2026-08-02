@@ -2,10 +2,9 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="quadcopter">
 
-    <!--
+
     <xacro:arg name="is_ignition" default="true"/> 
     <xacro:include filename="$(find drone_description)/urdf/quadcopter_gazebo.xacro"/>
-    -->
 
     <link name="base_footprint"/>
     <link name="arm_link">
@@ -23,6 +22,12 @@
                 <color rgba="0.972549 0.529412 0.00392157 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="-0.015 -0.004 -0.02" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Arm_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="arm_link_1">
         <inertial>
@@ -39,6 +44,12 @@
                 <color rgba="0.972549 0.529412 0.00392157 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="-0.000707107 0.00494975 0" rpy="0 -0 -2.35619" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Arm_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="arm_link_2">
         <inertial>
@@ -55,6 +66,12 @@
                 <color rgba="0.972549 0.529412 0.00392157 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0.000707107 -0.00494975 0" rpy="0 -0 0.785398" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Arm_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="arm_link_3">
         <inertial>
@@ -71,6 +88,12 @@
                 <color rgba="0.972549 0.529412 0.00392157 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="-0.00777817 -0.013435 0" rpy="0 -0 0.785398" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Arm_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="base_link">
         <inertial>
@@ -87,6 +110,12 @@
                 <color rgba="0.972549 0.529412 0.00392157 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0.0311127 0.0226274 -0.004" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/base_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="board_link">
         <inertial>
@@ -103,6 +132,12 @@
                 <color rgba="0.498039 0.498039 0.498039 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="-0.01525 0.01525 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Board_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="board_link_1">
         <inertial>
@@ -119,6 +154,12 @@
                 <color rgba="0.498039 0.498039 0.498039 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0.01525 0.01525 -0.00175" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Board_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="imu_link">
         <inertial>
@@ -135,6 +176,12 @@
                 <color rgba="0 0 1 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="1.4456e-19 3.97541e-19 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/imu_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="motor_link">
         <inertial>
@@ -151,6 +198,12 @@
                 <color rgba="0.623529 0.615686 0.615686 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Motor_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="motor_link_1">
         <inertial>
@@ -167,6 +220,12 @@
                 <color rgba="0.623529 0.615686 0.615686 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 -0 0.0429589" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Motor_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="motor_link_2">
         <inertial>
@@ -183,6 +242,12 @@
                 <color rgba="0.623529 0.615686 0.615686 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Motor_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="motor_link_3">
         <inertial>
@@ -199,6 +264,12 @@
                 <color rgba="0.623529 0.615686 0.615686 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Motor_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="pillar_link">
         <inertial>
@@ -215,6 +286,12 @@
                 <color rgba="0.498039 0.498039 0.498039 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 -7.65404e-20 -0.0039" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Pillar_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="pillar_link_1">
         <inertial>
@@ -231,6 +308,12 @@
                 <color rgba="0.498039 0.498039 0.498039 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 -7.65404e-20 -0.0039" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Pillar_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="pillar_link_2">
         <inertial>
@@ -247,6 +330,12 @@
                 <color rgba="0.498039 0.498039 0.498039 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 -7.65404e-20 -0.0039" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Pillar_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="pillar_link_3">
         <inertial>
@@ -263,6 +352,12 @@
                 <color rgba="0.498039 0.498039 0.498039 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 -7.65404e-20 -0.0039" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Pillar_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="propeller_link">
         <inertial>
@@ -343,6 +438,12 @@
                 <color rgba="0.498039 0.498039 0.498039 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 -9.18485e-20 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Spacer_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="spacer_link_1">
         <inertial>
@@ -359,6 +460,12 @@
                 <color rgba="0.498039 0.498039 0.498039 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 -9.18485e-20 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Spacer_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="spacer_link_2">
         <inertial>
@@ -375,6 +482,12 @@
                 <color rgba="0.498039 0.498039 0.498039 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 -9.18485e-20 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Spacer_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <link name="spacer_link_3">
         <inertial>
@@ -391,6 +504,12 @@
                 <color rgba="0.498039 0.498039 0.498039 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 -9.18485e-20 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Spacer_link.stl" scale="1 1 1" />
+            </geometry>
+        </collision>
     </link>
     <link name="spinner_link">
         <inertial>
@@ -471,6 +590,12 @@
                 <color rgba="0.972549 0.529412 0.00392157 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://drone_description/meshes/Top_link.stl"/>
+            </geometry>
+        </collision>
     </link>
     <joint name="base_joint" type="fixed">
         <parent link="base_footprint" />

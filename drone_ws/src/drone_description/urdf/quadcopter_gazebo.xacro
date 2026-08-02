@@ -5,7 +5,7 @@
     <gazebo>
         <xacro:if value="$(arg is_ignition)">
             <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
-                <parameters>$(find bumperbot_controller)/config/bumperbot_controllers.yaml</parameters>
+                <parameters>$(find drone_controllers)/config/mellinger_controller.yaml</parameters>
             </plugin>
             <plugin filename="ignition-gazebo-imu-system" name="ignition::gazebo::systems::Imu">
             </plugin>
@@ -13,11 +13,48 @@
         </xacro:if>
         <xacro:unless value="$(arg is_ignition)">
             <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-                <parameters>$(find bumperbot_controller)/config/bumperbot_controllers.yaml</parameters>
+                <parameters>$(find drone_controllers)/config/mellinger_controller.yaml</parameters>
             </plugin>
             <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu">
             </plugin>
         </xacro:unless>
+    </gazebo>
+
+
+    <gazebo reference="pillar_link">
+        <mu1>0.8</mu1>
+        <mu2>0.8</mu2>
+        <kp>100000</kp>
+        <kd>10</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+    </gazebo>
+
+    <gazebo reference="pillar_link_1">
+        <mu1>0.8</mu1>
+        <mu2>0.8</mu2>
+        <kp>100000</kp>
+        <kd>10</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+    </gazebo>
+
+    <gazebo reference="pillar_link_2">
+        <mu1>0.8</mu1>
+        <mu2>0.8</mu2>
+        <kp>100000</kp>
+        <kd>10</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+    </gazebo>
+
+    <gazebo reference="pillar_link_3">
+        <mu1>0.8</mu1>
+        <mu2>0.8</mu2>
+        <kp>100000</kp>
+        <kd>10</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
     </gazebo>
 
     <gazebo reference="imu_link">

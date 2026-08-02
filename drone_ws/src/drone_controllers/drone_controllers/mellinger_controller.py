@@ -18,10 +18,10 @@ class MellingerController(Node):
         self.declare_parameter("L",0.25)
         self.declare_parameter("kF", 3e-5)
         self.declare_parameter("kM", 1.1e-6)
-        self.declare_parameter("Kv",10)
-        self.declare_parameter("Kp",25)
-        self.declare_parameter("Kr",1)
-        self.declare_parameter("Kw",1)
+        self.declare_parameter("Kv",10.0)
+        self.declare_parameter("Kp",25.0)
+        self.declare_parameter("Kr",1.0)
+        self.declare_parameter("Kw",1.0)
 
         self.mass_ = self.get_parameter("mass").get_parameter_value().double_value
         self.g_ = self.get_parameter("g").get_parameter_value().double_value
@@ -47,9 +47,9 @@ class MellingerController(Node):
 
         self.motor_pub_ = self.create_publisher(Float64MultiArray,"motor_publisher/commands",10)
         # Sends the angular velocities to Gazebo [s1, s2, s3, s4]
-        self.ground_truth_sub_ = self.create_subscription(Odometry, "drone_controller/odom",self.odomCallback, 10)
+        self.ground_truth_sub_ = self.create_subscription(Odometry, "mellinger_controller/odom",self.odomCallback, 10)
         # Receives s = {position, velocity, quaternion, angular velocity}
-        self.velocity_sub_ = self.create_subscription(TwistStamped, "drone_controller/cmd_vel",self.velCallback, 10)
+        self.velocity_sub_ = self.create_subscription(TwistStamped, "mellinger_controller/cmd_vel",self.velCallback, 10)
         # Sends the desired trajectory velocity and yaw
 
         self.M_ = array([
