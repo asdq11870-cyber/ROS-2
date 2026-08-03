@@ -10,15 +10,30 @@ find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_python REQUIRED)
 find_package(rclpy REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 ament_python_install_package(${PROJECT_NAME})
 
-install{
+include_directories(include)
+
+install(
+  DIRECTORY include
+  DESTINATION include
+)
+
+install(
   DIRECTORY config launch
-  DESTIONATION share/${PROJECT_NAME}
-}
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(PROGRAMS
+  ${PROJECT_NAME}/mellinger_controller.py
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 
 if(BUILD_TESTING)

@@ -5,6 +5,7 @@
 
     <xacro:arg name="is_ignition" default="true"/> 
     <xacro:include filename="$(find drone_description)/urdf/quadcopter_gazebo.xacro"/>
+    <xacro:include filename="$(find drone_description)/urdf/quadcopter_ros2_control.xacro"/>
 
     <link name="base_footprint"/>
     <link name="arm_link">
