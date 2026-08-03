@@ -8,6 +8,10 @@ from launch.conditions import IfCondition, UnlessCondition
 
 def generate_launch_description():
 
+    use_python_arg = DeclareLaunchArgument(
+        name="use_python", default_value=True
+    )
+
     joy_node = Node(
         package="joy",
         executable="joy_node",
@@ -24,36 +28,39 @@ def generate_launch_description():
         output="screen"
     )
 
-    mass_arg = DeclareLaunchArgument(
-        name="mass", default_value=0.138
+    use_python = LaunchConfiguration("use_python")
+
+
+    joint_state_broadcaster_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=[
+            "joint_state_broadcaster","--controller-manager","/controller_manager"
+        ]
     )
 
-    L_arg = DeclareLaunchArgument(
-        name="L", default_value=0.25
-    )
-
-    kF_arg = DeclareLaunchArgument(
-        name="kF", default_value=3e-5
-    )
-
-    kM_arg = DeclareLaunchArgument(
-        name="kM", default_value=1.1e-6
-    )
-
-    kv_arg = DeclareLaunchArgument(
-        name="kv", default_value=24.7
-    )
-
-    kp_arg = DeclareLaunchArgument(
-        name="kp", default_value=9.35
-    )
-
-    kr_arg = DeclareLaunchArgument(
-        name="kr", default_value=2.5
-    )
-
-    kw_arg = DeclareLaunchArgument(
-        name="kw", default_value=0.8
+    mellinger_spawner = GroupAction(
+        actions=[
+            Node(
+                package="controller_manager",
+                executable="spawner",
+                arguments=[
+                    "simple_velocity_controller", "--controller-manager", "/controller_manager"
+                ]
+            ),
+            Node(
+                package="drone_controllers",
+                executable="mellinger_controller.py",
+                parameters=[os.path.join(get_package_share_directory("drone_controllers"),"config","mellinger_controller.yaml")],
+                condition=IfCondition(use_python)
+            ),
+            Node(
+                package="drone_controllers",
+                executable="mellinger_controller",
+                parameters=[os.path.join(get_package_share_directory("drone_controllers"),"config","mellinger_controller.yaml")],
+                condition=UnlessCondition(use_python)
+            )
+        ]
     )
     
 
@@ -61,4 +68,6 @@ def generate_launch_description():
     return LaunchDescription([
         joy_node,
         joy_teleop,
+        joint_state_broadcaster_spawner,
+        mellinger_spawner
     ])
