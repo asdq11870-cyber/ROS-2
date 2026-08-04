@@ -1,0 +1,767 @@
+<sdf version='1.7'>
+  <model name='quadcopter'>
+    <link name='base_footprint'>
+      <inertial>
+        <pose>0.028068 0.025892 0.009285 0 -0 0</pose>
+        <mass>0.129768</mass>
+        <inertia>
+          <ixx>0.000418502</ixx>
+          <ixy>0.000138815</ixy>
+          <ixz>2.50123e-05</ixz>
+          <iyy>0.000593277</iyy>
+          <iyz>-5.05663e-05</iyz>
+          <izz>0.000944776</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_footprint_fixed_joint_lump__base_link_collision'>
+        <pose>0.031113 0.022627 0.004 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/base_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__board_link_collision_1'>
+        <pose>0.031113 0.022627 0.0075 0 -0 -0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Board_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__spacer_link_collision_2'>
+        <pose>0.015863 0.037877 0.00925 0 -0 -0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Spacer_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__spacer_link_3_collision_3'>
+        <pose>0.046363 0.037877 0.00925 0 -0 -0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Spacer_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__spacer_link_1_collision_4'>
+        <pose>0.015863 0.007377 0.00925 0 -0 -0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Spacer_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__spacer_link_2_collision_5'>
+        <pose>0.046363 0.007377 0.00925 0 -0 -0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Spacer_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__board_link_1_collision_6'>
+        <pose>0.031113 0.022627 0.017 3.14159 0 -3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Board_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__imu_link_collision_7'>
+        <pose>0.031113 0.022627 0.017 5e-06 0 -0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/imu_link.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__arm_link_3_collision_8'>
+        <pose>0.000707 0.040305 0.008 -0 -0 0.785398</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Arm_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__motor_link_2_collision_9'>
+        <pose>-0.05374 0.10748 0.0125 0 -0 -0.785398</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Motor_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__pillar_link_collision_10'>
+        <pose>-0.039658 0.087035 0.0119 -3.14159 0 2.35619</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Pillar_link.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>100000</kp>
+              <kd>10</kd>
+              <max_vel>0.1</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__arm_link_2_collision_11'>
+        <pose>0.04879 0.053033 0.008 0 -0 -0.785402</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Arm_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__motor_link_collision_12'>
+        <pose>0.115966 0.10748 0.0125 0 -0 -0.785402</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Motor_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__pillar_link_1_collision_13'>
+        <pose>0.09552 0.093398 0.0119 -3.14159 0 2.3562</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Pillar_link.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>100000</kp>
+              <kd>10</kd>
+              <max_vel>0.1</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__arm_link_collision_14'>
+        <pose>0.004 -0.015 -0.052 -0 -0 1.57081</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Arm_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__motor_link_1_collision_15'>
+        <pose>0.144226 -0.047739 -0.063 0 0 1.61376</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Motor_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__pillar_link_2_collision_16'>
+        <pose>0.037644 -0.09088 -0.0119 1e-06 -2e-06 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Pillar_link.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>100000</kp>
+              <kd>10</kd>
+              <max_vel>0.1</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__arm_link_1_collision_17'>
+        <pose>0.061518 0.00495 0.008 -0 0 -2.35619</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Arm_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__motor_link_3_collision_18'>
+        <pose>0.115966 -0.062225 0.0125 0 0 -0.785398</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Motor_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__pillar_link_3_collision_19'>
+        <pose>0.101884 -0.04178 0.0119 -3.14159 -0 2.35619</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Pillar_link.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>100000</kp>
+              <kd>10</kd>
+              <max_vel>0.1</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__top_link_collision_20'>
+        <pose>-0.081496 0.033552 0.025838 -3.14159 0 -2.39915</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Top_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_footprint_fixed_joint_lump__base_link_visual'>
+        <pose>0.031113 0.022627 0.004 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/base_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__board_link_visual_1'>
+        <pose>0.031113 0.022627 0.0075 0 -0 -0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Board_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__spacer_link_visual_2'>
+        <pose>0.015863 0.037877 0.00925 0 -0 -0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Spacer_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__spacer_link_3_visual_3'>
+        <pose>0.046363 0.037877 0.00925 0 -0 -0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Spacer_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__spacer_link_1_visual_4'>
+        <pose>0.015863 0.007377 0.00925 0 -0 -0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Spacer_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__spacer_link_2_visual_5'>
+        <pose>0.046363 0.007377 0.00925 0 -0 -0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Spacer_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__board_link_1_visual_6'>
+        <pose>0.031113 0.022627 0.017 3.14159 0 -3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Board_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__imu_link_visual_7'>
+        <pose>0.031113 0.022627 0.017 5e-06 0 -0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/imu_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__arm_link_3_visual_8'>
+        <pose>0.000707 0.040305 0.008 -0 -0 0.785398</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Arm_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__motor_link_2_visual_9'>
+        <pose>-0.05374 0.10748 0.0125 0 -0 -0.785398</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Motor_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__pillar_link_visual_10'>
+        <pose>-0.039658 0.087035 0.0119 -3.14159 0 2.35619</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Pillar_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__arm_link_2_visual_11'>
+        <pose>0.04879 0.053033 0.008 0 -0 -0.785402</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Arm_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__motor_link_visual_12'>
+        <pose>0.115966 0.10748 0.0125 0 -0 -0.785402</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Motor_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__pillar_link_1_visual_13'>
+        <pose>0.09552 0.093398 0.0119 -3.14159 0 2.3562</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Pillar_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__arm_link_visual_14'>
+        <pose>0.004 -0.015 -0.052 -0 -0 1.57081</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Arm_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__motor_link_1_visual_15'>
+        <pose>0.144226 -0.047739 -0.063 0 0 1.61376</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Motor_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__pillar_link_2_visual_16'>
+        <pose>0.037644 -0.09088 -0.0119 1e-06 -2e-06 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Pillar_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__arm_link_1_visual_17'>
+        <pose>0.061518 0.00495 0.008 -0 0 -2.35619</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Arm_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__motor_link_3_visual_18'>
+        <pose>0.115966 -0.062225 0.0125 0 0 -0.785398</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Motor_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__pillar_link_3_visual_19'>
+        <pose>0.101884 -0.04178 0.0119 -3.14159 -0 2.35619</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Pillar_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__top_link_visual_20'>
+        <pose>-0.081496 0.033552 0.025838 -3.14159 0 -2.39915</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Top_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <sensor name='imu' type='imu'>
+        <always_on>1</always_on>
+        <update_rate>100</update_rate>
+        <topic>imu</topic>
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.0002</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.0002</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.0002</stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.017</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.017</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.017</stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+        <pose>0.031113 0.022627 0.017 5e-06 0 -0</pose>
+        <gz_frame_id>imu_link</gz_frame_id>
+      </sensor>
+    </link>
+    <joint name='motor4_spinner4_joint' type='revolute'>
+      <pose relative_to='base_footprint'>-0.05374 0.10748 0.031 0 -0 -0.785398</pose>
+      <parent>base_footprint</parent>
+      <child>spinner_link</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='spinner_link'>
+      <pose relative_to='motor4_spinner4_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 -0 0.004786 0 -0 0</pose>
+        <mass>0.00216855</mass>
+        <inertia>
+          <ixx>6.34383e-07</ixx>
+          <ixy>-2.32556e-08</ixy>
+          <ixz>5.4331e-25</ixz>
+          <iyy>4.87442e-08</iyy>
+          <iyz>8.57064e-24</iyz>
+          <izz>6.40329e-07</izz>
+        </inertia>
+      </inertial>
+      <visual name='spinner_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Spinner_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='spinner_link_fixed_joint_lump__propeller_link_visual_1'>
+        <pose>-0 -0 0.0065 0 0 -0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Propeller_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='motor3_spinner3_joint' type='revolute'>
+      <pose relative_to='base_footprint'>0.115966 0.10748 0.031 0 -0 -0.785402</pose>
+      <parent>base_footprint</parent>
+      <child>spinner_link_2</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='spinner_link_2'>
+      <pose relative_to='motor3_spinner3_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.004786 0 -0 0</pose>
+        <mass>0.00216855</mass>
+        <inertia>
+          <ixx>6.34383e-07</ixx>
+          <ixy>-2.32556e-08</ixy>
+          <ixz>5.4331e-25</ixz>
+          <iyy>4.87442e-08</iyy>
+          <iyz>-4.43974e-23</iyz>
+          <izz>6.40329e-07</izz>
+        </inertia>
+      </inertial>
+      <visual name='spinner_link_2_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Spinner_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='spinner_link_2_fixed_joint_lump__propeller_link_3_visual_1'>
+        <pose>-0 0 0.0065 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Propeller_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='motor1_spinner1_joint' type='revolute'>
+      <pose relative_to='base_footprint'>0.144226 -0.047739 -0.0365 0 0 1.61376</pose>
+      <parent>base_footprint</parent>
+      <child>spinner_link_3</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='spinner_link_3'>
+      <pose relative_to='motor1_spinner1_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>-0 -0 0.005381 0 -0 0</pose>
+        <mass>0.00320456</mass>
+        <inertia>
+          <ixx>1.2358e-06</ixx>
+          <ixy>-4.65112e-08</ixy>
+          <ixz>-5.10307e-24</ixz>
+          <iyy>6.45218e-08</iyy>
+          <iyz>1.15996e-23</iyz>
+          <izz>1.24891e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='spinner_link_3_visual'>
+        <pose>-0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Spinner_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='spinner_link_3_fixed_joint_lump__propeller_link_2_visual_1'>
+        <pose>-0 -0 0.01 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Propeller_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='motor2_spinner2_joint' type='revolute'>
+      <pose relative_to='base_footprint'>0.115966 -0.062225 0.031 0 0 -0.785398</pose>
+      <parent>base_footprint</parent>
+      <child>spinner_link_1</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='spinner_link_1'>
+      <pose relative_to='motor2_spinner2_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>-0 -0 0.004786 0 -0 0</pose>
+        <mass>0.00216855</mass>
+        <inertia>
+          <ixx>6.34383e-07</ixx>
+          <ixy>-2.32556e-08</ixy>
+          <ixz>1.37853e-23</ixz>
+          <iyy>4.87442e-08</iyy>
+          <iyz>8.57064e-24</iyz>
+          <izz>6.40329e-07</izz>
+        </inertia>
+      </inertial>
+      <visual name='spinner_link_1_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Spinner_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='spinner_link_1_fixed_joint_lump__propeller_link_1_visual_1'>
+        <pose>-0 -0 0.0065 -0 0 -0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Propeller_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='motor1_spinner1_joint' type='revolute'>
+      <pose relative_to='base_footprint'>0.144226 -0.047739 -0.0365 0 0 1.61376</pose>
+      <parent>base_footprint</parent>
+      <child>spinner_link_3</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='spinner_link_3'>
+      <pose relative_to='motor1_spinner1_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>-0 -0 0.005381 0 -0 0</pose>
+        <mass>0.00320456</mass>
+        <inertia>
+          <ixx>1.2358e-06</ixx>
+          <ixy>-4.65112e-08</ixy>
+          <ixz>-5.10307e-24</ixz>
+          <iyy>6.45218e-08</iyy>
+          <iyz>1.15996e-23</iyz>
+          <izz>1.24891e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='spinner_link_3_visual'>
+        <pose>-0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Spinner_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='spinner_link_3_fixed_joint_lump__propeller_link_2_visual_1'>
+        <pose>-0 -0 0.01 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://drone_description/meshes/Propeller_link.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <static>0</static>
+    <plugin name='ign_ros2_control::IgnitionROS2ControlPlugin' filename='ign_ros2_control-system'>
+      <parameters>/home/unknown/Main_Folder/Github/ROS-2/drone_ws/install/drone_controllers/share/drone_controllers/config/ros2_control_parameters.yaml</parameters>
+    </plugin>
+    <plugin name='ignition::gazebo::systems::Imu' filename='ignition-gazebo-imu-system'/>
+  </model>
+</sdf>
