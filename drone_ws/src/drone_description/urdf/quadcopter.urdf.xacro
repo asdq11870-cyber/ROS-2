@@ -732,8 +732,8 @@
     <joint name="top_left_arm_base_1_joint" type="fixed">
         <origin xyz="-1.38778e-17 -1.73472e-18 -0.02" rpy="-2.81271e-17 6.53168e-17 -2.35619" />
         <axis xyz="-0 -0 1" />
-        <parent link="arm_link" />
-        <child link="base_link" />
+        <parent link="base_link" />
+        <child link="arm_link" />
     </joint>
     <joint name="top_left_arm_motor1_joint" type="fixed">
         <origin xyz="-0.006 0.082 -0.0155" rpy="2.09423e-16 2.59744e-16 3.14159" />

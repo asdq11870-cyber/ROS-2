@@ -43,7 +43,7 @@ def generate_launch_description():
     )
 
     model_path = str(Path(drone_description_package_location).parent.resolve())
-    model_path += pathsep + os.path.join(drone_description_package_location,"models")
+    #model_path += pathsep + os.path.join(drone_description_package_location,"models")
 
     gazebo_resource_path = SetEnvironmentVariable(
         "GZ_SIM_RESOURCE_PATH", model_path
