@@ -2,7 +2,7 @@ mellinger_controller:
   ros__parameters:
     mass: 0.138
     g: 9.81
-    L: 0.25
+    L: 0.12021
     kF: 3.0e-5
     kM: 1.1e-6
     Kp: 24.7

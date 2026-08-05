@@ -15,7 +15,7 @@ class MellingerController(Node):
 
         self.declare_parameter("mass", 0.5)
         self.declare_parameter("g", 9.81)
-        self.declare_parameter("L",0.25)
+        self.declare_parameter("L",0.12021)
         self.declare_parameter("kF", 3e-5)
         self.declare_parameter("kM", 1.1e-6)
         self.declare_parameter("Kv",10.0)
