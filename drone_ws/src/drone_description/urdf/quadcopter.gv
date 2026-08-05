@@ -1,0 +1,92 @@
+digraph G {
+node [shape=box];
+"root" [label="root"];
+"top_link" [label="top_link"];
+"arm_link" [label="arm_link"];
+"base_link" [label="base_link"];
+"board_link" [label="board_link"];
+"spacer_link" [label="spacer_link"];
+"spacer_link_3" [label="spacer_link_3"];
+"spacer_link_1" [label="spacer_link_1"];
+"spacer_link_2" [label="spacer_link_2"];
+"board_link_1" [label="board_link_1"];
+"imu_link" [label="imu_link"];
+"arm_link_3" [label="arm_link_3"];
+"motor_link_2" [label="motor_link_2"];
+"spinner_link" [label="spinner_link"];
+"propeller_link" [label="propeller_link"];
+"pillar_link" [label="pillar_link"];
+"arm_link_2" [label="arm_link_2"];
+"motor_link" [label="motor_link"];
+"spinner_link_2" [label="spinner_link_2"];
+"propeller_link_3" [label="propeller_link_3"];
+"pillar_link_1" [label="pillar_link_1"];
+"arm_link_1" [label="arm_link_1"];
+"motor_link_3" [label="motor_link_3"];
+"spinner_link_1" [label="spinner_link_1"];
+"propeller_link_1" [label="propeller_link_1"];
+"pillar_link_3" [label="pillar_link_3"];
+"motor_link_1" [label="motor_link_1"];
+"spinner_link_3" [label="spinner_link_3"];
+"propeller_link_2" [label="propeller_link_2"];
+"pillar_link_2" [label="pillar_link_2"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"root" -> "hanging_node_to_root_joint" [label="xyz: -0.0814963 0.0335523 0.0258382 \nrpy: -3.14159 2.13437e-16 -2.39915"]
+"hanging_node_to_root_joint" -> "top_link"
+"top_link" -> "arms_top_1_joint" [label="xyz: 0.0311127 -0.0226274 0.0041 \nrpy: -3.14159 -4.28599e-17 0.785398"]
+"arms_top_1_joint" -> "arm_link"
+"arm_link" -> "top_left_arm_base_1_joint" [label="xyz: -1.38778e-17 -1.73472e-18 -0.02 \nrpy: -2.81271e-17 6.53168e-17 -2.35619"]
+"top_left_arm_base_1_joint" -> "base_link"
+"base_link" -> "base_board1_joint" [label="xyz: 0.0463627 0.00737742 -0.0005 \nrpy: 2.11916e-17 -4.90352e-18 -4.996e-16"]
+"base_board1_joint" -> "board_link"
+"board_link" -> "rear_left_board1_spacer_joint" [label="xyz: -0.0305 0.0305 0.00175 \nrpy: 2.46519e-32 1.38667e-32 -5.55112e-17"]
+"rear_left_board1_spacer_joint" -> "spacer_link"
+"board_link" -> "rear_right_board1_spacer_joint" [label="xyz: -3.46945e-18 0.0305 0.00175 \nrpy: 2.46519e-32 1.38667e-32 -5.55112e-17"]
+"rear_right_board1_spacer_joint" -> "spacer_link_3"
+"board_link" -> "top_left_board1_spacer_joint" [label="xyz: -0.0305 0 0.00175 \nrpy: 2.46519e-32 1.38667e-32 -5.55112e-17"]
+"top_left_board1_spacer_joint" -> "spacer_link_1"
+"board_link" -> "top_right_board1_spacer_joint" [label="xyz: 0 0 0.00175 \nrpy: 2.46519e-32 1.38667e-32 -5.55112e-17"]
+"top_right_board1_spacer_joint" -> "spacer_link_2"
+"spacer_link_2" -> "spacers_board2_joint" [label="xyz: 0 0 0.006 \nrpy: 3.14159 -0 -3.14159"]
+"spacers_board2_joint" -> "board_link_1"
+"board_link_1" -> "board2_imu_joint" [label="xyz: 0.01525 0.01525 -0.00175 \nrpy: -3.14159 -0 -3.14159"]
+"board2_imu_joint" -> "imu_link"
+"base_link" -> "rear_left_arm_base_1_joint" [label="xyz: 0.00848528 0.0537401 -8.67362e-19 \nrpy: 1.11911e-17 -1.72107e-17 1.94289e-16"]
+"rear_left_arm_base_1_joint" -> "arm_link_3"
+"arm_link_3" -> "rear_left_arm_motor4_joint" [label="xyz: -0.0622254 0.0537401 0.0045 \nrpy: -6.38197e-33 1.54074e-32 -0.785398"]
+"rear_left_arm_motor4_joint" -> "motor_link_2"
+"motor_link_2" -> "motor4_spinner4_joint" [label="xyz: 0 0 0.0185 \nrpy: 1.2326e-32 1.2326e-32 -6.93889e-18"]
+"motor4_spinner4_joint" -> "spinner_link"
+"spinner_link" -> "spinner4_propeller4_joint" [label="xyz: 0 0 0.0035 \nrpy: 1.2326e-32 1.2326e-32 -6.93889e-18"]
+"spinner4_propeller4_joint" -> "propeller_link"
+"arm_link_3" -> "rear_left_arm_pillar4_joint" [label="xyz: -0.0481437 0.0332945 -1.73472e-18 \nrpy: -3.14159 -0 2.35619"]
+"rear_left_arm_pillar4_joint" -> "pillar_link"
+"base_link" -> "rear_right_arm_base_1_joint" [label="xyz: 0.0537401 0.0537401 -1.30104e-18 \nrpy: 1.24836e-16 1.19119e-17 -1.5708"]
+"rear_right_arm_base_1_joint" -> "arm_link_2"
+"arm_link_2" -> "rear_right_arm_motor3_joint" [label="xyz: -0.0537401 0.0622254 0.0045 \nrpy: -4.11167e-32 3.14719e-32 0.785398"]
+"rear_right_arm_motor3_joint" -> "motor_link"
+"motor_link" -> "motor3_spinner3_joint" [label="xyz: 0 2.77556e-17 0.0185 \nrpy: 0 -0 2.902e-33"]
+"motor3_spinner3_joint" -> "spinner_link_2"
+"spinner_link_2" -> "spinner3_propeller3_joint" [label="xyz: 0 2.77556e-17 0.0035 \nrpy: 0 -0 2.902e-33"]
+"spinner3_propeller3_joint" -> "propeller_link_3"
+"arm_link_2" -> "rear_right_arm_pillar3_joint" [label="xyz: -0.0396584 0.0417797 -2.38524e-18 \nrpy: -3.14159 -0 -2.35619"]
+"rear_right_arm_pillar3_joint" -> "pillar_link_1"
+"base_link" -> "top_right_arm_base_1_joint" [label="xyz: 0.0622254 2.08167e-17 0 \nrpy: 4.15504e-17 2.70178e-17 4.996e-16"]
+"top_right_arm_base_1_joint" -> "arm_link_1"
+"arm_link_1" -> "top_right_arm_motor2_joint" [label="xyz: 0.0537401 -0.0622254 0.0045 \nrpy: -1.02112e-32 2.46519e-32 -0.785398"]
+"top_right_arm_motor2_joint" -> "motor_link_3"
+"motor_link_3" -> "motor2_spinner2_joint" [label="xyz: 0 3.46945e-18 0.0185 \nrpy: -8.55285e-50 2.46519e-32 -6.93889e-18"]
+"motor2_spinner2_joint" -> "spinner_link_1"
+"spinner_link_1" -> "spinner2_propeller2_joint" [label="xyz: -6.93889e-18 0 0.0035 \nrpy: -8.55285e-50 2.46519e-32 -6.93889e-18"]
+"spinner2_propeller2_joint" -> "propeller_link_1"
+"arm_link_1" -> "top_right_arm_pillar2_joint" [label="xyz: 0.0396584 -0.0417797 -2.1684e-19 \nrpy: -3.14159 -0 2.35619"]
+"top_right_arm_pillar2_joint" -> "pillar_link_3"
+"arm_link" -> "top_left_arm_motor1_joint" [label="xyz: -0.006 0.082 -0.0155 \nrpy: 2.09423e-16 2.59744e-16 3.14159"]
+"top_left_arm_motor1_joint" -> "motor_link_1"
+"motor_link_1" -> "motor1_spinner1_joint" [label="xyz: 2.77556e-17 1.38778e-17 0.0185 \nrpy: -7.64093e-18 3.26804e-18 0.0429589"]
+"motor1_spinner1_joint" -> "spinner_link_3"
+"spinner_link_3" -> "spinner1_propeller1_joint" [label="xyz: 0 0 0.0035 \nrpy: 0 -0 0"]
+"spinner1_propeller1_joint" -> "propeller_link_2"
+"arm_link" -> "top_left_arm_pillar1_joint" [label="xyz: -0.0105 0.0575855 -0.02 \nrpy: -3.14159 1.2326e-32 6.93889e-18"]
+"top_left_arm_pillar1_joint" -> "pillar_link_2"
+}
