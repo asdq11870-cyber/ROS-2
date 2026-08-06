@@ -5,7 +5,7 @@ mellinger_controller:
     L: 0.12021
     kF: 3.0e-5
     kM: 1.1e-6
-    Kp: 24.7
-    Kv: 9.35
-    Kr: 2.5
-    Kw: 0.8
+    Kp: 5.0
+    Kv: 3.0
+    Kr: 0.5
+    Kw: 0.1

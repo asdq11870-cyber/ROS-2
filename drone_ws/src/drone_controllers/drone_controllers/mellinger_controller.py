@@ -18,10 +18,10 @@ class MellingerController(Node):
         self.declare_parameter("L",0.12021)
         self.declare_parameter("kF", 3e-5)
         self.declare_parameter("kM", 1.1e-6)
-        self.declare_parameter("Kv",10.0)
-        self.declare_parameter("Kp",25.0)
-        self.declare_parameter("Kr",1.0)
-        self.declare_parameter("Kw",1.0)
+        self.declare_parameter("Kv",9.35)
+        self.declare_parameter("Kp",24.7)
+        self.declare_parameter("Kr",2.5)
+        self.declare_parameter("Kw",0.8)
 
         self.mass_ = self.get_parameter("mass").get_parameter_value().double_value
         self.g_ = self.get_parameter("g").get_parameter_value().double_value
@@ -36,13 +36,13 @@ class MellingerController(Node):
         self.get_logger().info("Using a Drag Coefficient of %.5f"%self.kM_)
 
         # Gets the time right now in nanoseconds
-        self.Kv_ = eye(3) * self.get_parameter("Kv").get_parameter_value().integer_value
+        self.Kv_ = eye(3) * self.get_parameter("Kv").get_parameter_value().double_value
         # Controls the velocity correction, larger parameter means more correction
-        self.Kp_ = eye(3) * self.get_parameter("Kp").get_parameter_value().integer_value
+        self.Kp_ = eye(3) * self.get_parameter("Kp").get_parameter_value().double_value
         # Controls the position correction, larger parameter means more correction
-        self.Kr_ = eye(3) * self.get_parameter("Kr").get_parameter_value().integer_value
+        self.Kr_ = eye(3) * self.get_parameter("Kr").get_parameter_value().double_value
         # Controls the altitude correction, larger parameter means more correction
-        self.Kw_ = eye(3) * self.get_parameter("Kw").get_parameter_value().integer_value
+        self.Kw_ = eye(3) * self.get_parameter("Kw").get_parameter_value().double_value
         # Controls the angular velocity correction, larger parameter means more correction
 
         self.motor_pub_ = self.create_publisher(Float64MultiArray,"/simple_velocity_controller/commands",10)
@@ -104,12 +104,18 @@ class MellingerController(Node):
         Tdes = -self.Kr_ @ eR - self.Kw_ @ eW
         tau_body = transpose(self.R_) @ Tdes
         rotor_speed_sq = self.M_inv_ @ array([Pdes, tau_body[0],tau_body[1],tau_body[2]])
+        
         rotor_speeds = array([
             sqrt(max(0,rotor_speed_sq[0])),
             -sqrt(max(0,rotor_speed_sq[1])),
             sqrt(max(0,rotor_speed_sq[2])),
             -sqrt(max(0,rotor_speed_sq[3]))
         ])
+        self.get_logger().info(f"Fdes = {Fdes}")
+        self.get_logger().info(f"Pdes = {Pdes}")
+        self.get_logger().info(f"tau_body = {tau_body}")
+        self.get_logger().info(f"rotor_speed_sq = {rotor_speed_sq}")
+        self.get_logger().info(f"rotor_speeds = {rotor_speeds}")
 
         msg = Float64MultiArray()
         msg.data = rotor_speeds.tolist()
