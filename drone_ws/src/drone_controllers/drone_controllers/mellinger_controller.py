@@ -111,6 +111,11 @@ class MellingerController(Node):
             sqrt(max(0,rotor_speed_sq[2])),
             -sqrt(max(0,rotor_speed_sq[3]))
         ])
+        self.get_logger().info(f"R_ =\n{self.R_}")
+        self.get_logger().info(f"eR = {eR}")
+        self.get_logger().info(f"eW = {eW}")
+        self.get_logger().info(f"Tdes = {Tdes}")
+        self.get_logger().info(f"W_T = {W_T}")
         self.get_logger().info(f"Fdes = {Fdes}")
         self.get_logger().info(f"Pdes = {Pdes}")
         self.get_logger().info(f"tau_body = {tau_body}")
