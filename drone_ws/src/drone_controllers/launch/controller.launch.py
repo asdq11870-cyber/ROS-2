@@ -1,5 +1,5 @@
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, GroupAction
+from launch.actions import DeclareLaunchArgument, GroupAction, TimerAction
 from launch_ros.actions import Node
 import os
 from ament_index_python.packages import get_package_share_directory
@@ -11,7 +11,7 @@ def generate_launch_description():
     use_python_arg = DeclareLaunchArgument(
         name="use_python", default_value="True"
     )
-
+    
     joy_node = Node(
         package="joy",
         executable="joy_node",
@@ -19,14 +19,19 @@ def generate_launch_description():
         parameters=[os.path.join(get_package_share_directory("drone_controllers"), "config", "joy_config.yaml")],
         output="screen"
     )
-    
-    joy_teleop = Node(
-        package="joy_teleop",
-        executable="joy_teleop",
-        name="joy_teleop",
-        parameters=[os.path.join(get_package_share_directory("drone_controllers"), "config", "joy_teleop.yaml")],
-        output="screen"
+    joy_teleop = TimerAction(
+        period=2.0,
+        actions=[
+            Node(
+                package="joy_teleop",
+                executable="joy_teleop",
+                name="joy_teleop",
+                parameters=[os.path.join(get_package_share_directory("drone_controllers"), "config", "joy_teleop.yaml")],
+                output="screen"
+            )
+        ]
     )
+  
 
     use_python = LaunchConfiguration("use_python")
 

@@ -1,7 +1,6 @@
 joy_node:
   ros__parameters:
-    device_id: 1
-    device_name: ""
+    dev: /dev/input/js0
     deadzone: 0.05 # Ignoring tiny joystick movements
     autorepeat_rate: 20.0 # Publishing rate
     coalesce_interval: 0.001 # Groups events with 1ms close

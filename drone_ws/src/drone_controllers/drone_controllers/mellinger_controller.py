@@ -1,4 +1,4 @@
-#!usr/bin/env python3
+#!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import TwistStamped
@@ -45,7 +45,7 @@ class MellingerController(Node):
         self.Kw_ = eye(3) * self.get_parameter("Kw").get_parameter_value().integer_value
         # Controls the angular velocity correction, larger parameter means more correction
 
-        self.motor_pub_ = self.create_publisher(Float64MultiArray,"motor_publisher/commands",10)
+        self.motor_pub_ = self.create_publisher(Float64MultiArray,"/simple_velocity_controller/commands",10)
         # Sends the angular velocities to Gazebo [s1, s2, s3, s4]
         self.ground_truth_sub_ = self.create_subscription(Odometry, "mellinger_controller/odom",self.odomCallback, 10)
         # Receives s = {position, velocity, quaternion, angular velocity}
@@ -104,7 +104,12 @@ class MellingerController(Node):
         Tdes = -self.Kr_ @ eR - self.Kw_ @ eW
         tau_body = transpose(self.R_) @ Tdes
         rotor_speed_sq = self.M_inv_ @ array([Pdes, tau_body[0],tau_body[1],tau_body[2]])
-        rotor_speeds = array([sqrt(max(0,s)) for s in rotor_speed_sq])
+        rotor_speeds = array([
+            sqrt(max(0,rotor_speed_sq[0])),
+            -sqrt(max(0,rotor_speed_sq[1])),
+            sqrt(max(0,rotor_speed_sq[2])),
+            -sqrt(max(0,rotor_speed_sq[3]))
+        ])
 
         msg = Float64MultiArray()
         msg.data = rotor_speeds.tolist()
