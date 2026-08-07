@@ -1,6 +1,6 @@
 <robot name="quadcopter" xmlns:xacro="https://www.ros.org/wiki/xacro">
 
-    <xacro:arg name="is_ignition" default="true"/>
+    <xacro:arg name="is_ignition" default="false"/>
     <xacro:include filename="$(find drone_description)/urdf/quadcopter_gazebo.xacro"/>
     <xacro:include filename="$(find drone_description)/urdf/quadcopter_ros2_control.xacro"/>
 
