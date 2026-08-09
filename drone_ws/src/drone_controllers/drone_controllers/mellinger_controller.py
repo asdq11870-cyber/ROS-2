@@ -74,9 +74,11 @@ class MellingerController(Node):
         self.yaw_rate_T_ = 0.0# Desired yaw rate
 
         self.timer_ = self.create_timer(0.01, self.controlLoop) # Timer callbacks take no msg arguement
+        self.show_logs = 0
 
 
     def controlLoop(self): # Function that executes the full mellinger pipeline
+        self.show_logs += 1
         self.yaw_T_ += self.yaw_rate_T_ * 0.01
         # Desired yaw
         
@@ -93,7 +95,7 @@ class MellingerController(Node):
         Rdes[:,1] = cross(Rdes[:,2],Rdes[:,0])
 
         temp_arr = (transpose(Rdes) @ self.R_ - transpose(self.R_) @ Rdes)
-        eR = 0.5 * array([-temp_arr[1,0],temp_arr[0,2],-temp_arr[2,1]])
+        eR = 0.5 * array([temp_arr[1,0],temp_arr[0,2],temp_arr[2,1]])
 
         h_w = zeros(3)
         W_T = zeros(3)
@@ -111,16 +113,17 @@ class MellingerController(Node):
             sqrt(max(0,rotor_speed_sq[2])),
             -sqrt(max(0,rotor_speed_sq[3]))
         ])
-        self.get_logger().info(f"R_ =\n{self.R_}")
-        self.get_logger().info(f"eR = {eR}")
-        self.get_logger().info(f"eW = {eW}")
-        self.get_logger().info(f"Tdes = {Tdes}")
-        self.get_logger().info(f"W_T = {W_T}")
-        self.get_logger().info(f"Fdes = {Fdes}")
-        self.get_logger().info(f"Pdes = {Pdes}")
-        self.get_logger().info(f"tau_body = {tau_body}")
-        self.get_logger().info(f"rotor_speed_sq = {rotor_speed_sq}")
-        self.get_logger().info(f"rotor_speeds = {rotor_speeds}")
+        if self.show_logs % 20 == 0:
+            self.get_logger().info(f"R_ =\n{self.R_}")
+            self.get_logger().info(f"eR = {eR}")
+            self.get_logger().info(f"eW = {eW}")
+            self.get_logger().info(f"Tdes = {Tdes}")
+            self.get_logger().info(f"W_T = {W_T}")
+            self.get_logger().info(f"Fdes = {Fdes}")
+            self.get_logger().info(f"Pdes = {Pdes}")
+            self.get_logger().info(f"tau_body = {tau_body}")
+            self.get_logger().info(f"rotor_speed_sq = {rotor_speed_sq}")
+            self.get_logger().info(f"rotor_speeds = {rotor_speeds}")
 
         msg = Float64MultiArray()
         msg.data = rotor_speeds.tolist()

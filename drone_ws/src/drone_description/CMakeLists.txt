@@ -10,10 +10,29 @@ find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_python REQUIRED)
 find_package(rclpy REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(gz-sim8 REQUIRED)
+find_package(yaml-cpp REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 ament_python_install_package(${PROJECT_NAME})
+
+
+add_library(rotor_thrust_system SHARED
+  src/rotor_thrust_system.cpp
+)
+
+target_link_libraries(rotor_thrust_system
+  gz-sim8::gz-sim8 yaml-cpp
+)
+
+target_include_directories(rotor_thrust_system PRIVATE
+  /opt/ros/jazzy/opt/gz_sim_vendor/include/gz/sim8
+)
+
+install(TARGETS rotor_thrust_system
+  LIBRARY DESTINATION lib
+)
 
 install(
   DIRECTORY meshes urdf launch rviz worlds
