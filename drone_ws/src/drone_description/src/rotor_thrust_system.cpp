@@ -6,6 +6,7 @@
 #include <gz/plugin/Register.hh> // Allows registration of this class as a gazebo plugin
 #include <gz/sim/components/Name.hh>
 #include <gz/sim/components/Model.hh>
+#include <gz/common/Console.hh>
 
 #include <cmath>
 #include <vector>
@@ -23,6 +24,7 @@ namespace rotor_thrust{ // a way of grouping c++ code under a name
         std::vector<std::string> rotors{"spinner_link","spinner_link_1","spinner_link_2","spinner_link_3"};
     public:
         void PreUpdate(const gz::sim::UpdateInfo&, gz::sim::EntityComponentManager& ecm) override{
+            gzmsg << "ROTOR THRUST PLUGIN RUNNING" << std::endl;
             // UpdateInfo for gaining information about the current simulation step
             // EntityComponentManager for accessing and modifying entities and their components
             if(!initialised){
@@ -65,6 +67,7 @@ namespace rotor_thrust{ // a way of grouping c++ code under a name
                 double omega = angularVel->Data().Z();
                 // Extracting the angular velocity around the z axis
                 double thrust = kF * omega * omega;
+                gzmsg << rotor << ": " << "Entity= " << linkEntity << "Omega= " << omega << "Thrust= " << thrust << std::endl;
                 // Aquiring the thrust
                 link.AddWorldForce(ecm, gz::math::Vector3d(0,0,thrust));
                 // Applying the thrust to the z axis

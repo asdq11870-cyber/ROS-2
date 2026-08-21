@@ -9,3 +9,4 @@ mellinger_controller:
     Kv: 1.0
     Kr: 0.1
     Kw: 0.05
+    show_logs: False

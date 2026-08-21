@@ -22,12 +22,14 @@ class MellingerController(Node):
         self.declare_parameter("Kp",24.7)
         self.declare_parameter("Kr",2.5)
         self.declare_parameter("Kw",0.8)
+        self.declare_parameter("show_logs",False)
 
         self.mass_ = self.get_parameter("mass").get_parameter_value().double_value
         self.g_ = self.get_parameter("g").get_parameter_value().double_value
         self.L_ = self.get_parameter("L").get_parameter_value().double_value
         self.kF_ = self.get_parameter("kF").get_parameter_value().double_value
         self.kM_ = self.get_parameter("kM").get_parameter_value().double_value
+        self.show_logs = self.get_parameter("show_logs").get_parameter_value().bool_value
 
         self.get_logger().info("Using a mass of %.2f"%self.mass_)
         self.get_logger().info("Using a gravitational field strength of %.2f"%self.g_)
@@ -74,11 +76,12 @@ class MellingerController(Node):
         self.yaw_rate_T_ = 0.0# Desired yaw rate
 
         self.timer_ = self.create_timer(0.01, self.controlLoop) # Timer callbacks take no msg arguement
-        self.show_logs = 0
+        self.log_iterator = 0
+        
 
 
     def controlLoop(self): # Function that executes the full mellinger pipeline
-        self.show_logs += 1
+        self.log_iterator += 1
         self.yaw_T_ += self.yaw_rate_T_ * 0.01
         # Desired yaw
         
@@ -109,11 +112,11 @@ class MellingerController(Node):
         
         rotor_speeds = array([
             sqrt(max(0,rotor_speed_sq[0])),
-            -sqrt(max(0,rotor_speed_sq[1])),
+            sqrt(max(0,rotor_speed_sq[1])),
             sqrt(max(0,rotor_speed_sq[2])),
-            -sqrt(max(0,rotor_speed_sq[3]))
+            sqrt(max(0,rotor_speed_sq[3]))
         ])
-        if self.show_logs % 20 == 0:
+        if self.log_iterator % 20 == 0 and self.show_logs:
             self.get_logger().info(f"R_ =\n{self.R_}")
             self.get_logger().info(f"eR = {eR}")
             self.get_logger().info(f"eW = {eW}")
