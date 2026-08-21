@@ -18,13 +18,16 @@ namespace rotor_thrust{ // a way of grouping c++ code under a name
     class RotorThrustSystem : public gz::sim::System, public gz::sim::ISystemPreUpdate{ // Inherits the ISystemPreUpdate to tell Gazebo we want the PreUpdate fucntion to be called
     private:
         bool initialised{false};
+        bool first_message{true};
         double kF{0.0};
         gz::sim::Model model{gz::sim::kNullEntity};
         // All variables are initialised to essentially zero
         std::vector<std::string> rotors{"spinner_link","spinner_link_1","spinner_link_2","spinner_link_3"};
     public:
         void PreUpdate(const gz::sim::UpdateInfo&, gz::sim::EntityComponentManager& ecm) override{
-            gzmsg << "ROTOR THRUST PLUGIN RUNNING" << std::endl;
+            if (first_message){
+                gzmsg << "ROTOR THRUST PLUGIN RUNNING" << std::endl;
+            }
             // UpdateInfo for gaining information about the current simulation step
             // EntityComponentManager for accessing and modifying entities and their components
             if(!initialised){
@@ -50,13 +53,17 @@ namespace rotor_thrust{ // a way of grouping c++ code under a name
                 // For getting the kF from the parameter yaml file
                 initialised = true;
             }
+            first_message = false;
             
             
             for(const auto& rotor: rotors){
             // For looping through the motors in the vector
                 auto linkEntity = model.LinkByName(ecm, rotor);
                 // link is found and initalised to a variable
-                if(linkEntity == gz::sim::kNullEntity) continue;
+                if(linkEntity == gz::sim::kNullEntity) {
+                    gzerr << "LINK NOT FOUND: " << linkEntity << std::endl;
+                    continue;
+                }
                 // kNullEntity means Gazebo did not find the link
                 gz::sim::Link link(linkEntity);
                 // Creating a link object

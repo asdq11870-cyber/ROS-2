@@ -13,3 +13,6 @@
 # Linux
 .DS_Store
 Thumbs.db
+
+# Text Files
+text_files/
