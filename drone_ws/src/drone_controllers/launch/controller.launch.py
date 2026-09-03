@@ -47,13 +47,6 @@ def generate_launch_description():
     mellinger_spawner = GroupAction(
         actions=[
             Node(
-                package="controller_manager",
-                executable="spawner",
-                arguments=[
-                    "simple_velocity_controller", "--controller-manager", "/controller_manager"
-                ]
-            ),
-            Node(
                 package="drone_controllers",
                 executable="mellinger_controller.py",
                 parameters=[os.path.join(get_package_share_directory("drone_controllers"),"config","mellinger_controller.yaml")],

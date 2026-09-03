@@ -7,18 +7,118 @@
             <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
                 <parameters>$(find drone_controllers)/config/ros2_control_parameters.yaml</parameters>
             </plugin>
-            <plugin filename="ignition-gazebo-imu-system" name="ignition::gazebo::systems::Imu">
+            <plugin filename="ignition-gazebo-imu-system" name="ignition::gazebo::systems::Imu"/>
+            <plugin 
+                filename="ignition-gazebo-multicopter-motor-model-system" 
+                name="ignition::gazebo::systems::MulticopterMotorModel">
+                <jointName>motor1_spinner1_joint</jointName>
+                <linkName>spinner_link_3</linkName>
+                <actuator_number>0</actuator_number>
+                <turningDirection>cw</turningDirection>
+                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
+                <motorConstant>3e-5</motorConstant>
+                <momentConstant>1.1e-6</momentConstant>
+                <motorType>velocity</motorType>
             </plugin>
-            <plugin filename="librotor_thrust_system.so" name="rotor_thrust::RotorThrustSystem">
+
+            <plugin 
+                filename="ignition-gazebo-multicopter-motor-model-system" 
+                name="ignition::gazebo::systems::MulticopterMotorModel">
+                <jointName>motor2_spinner2_joint</jointName>
+                <linkName>spinner_link_1</linkName>
+                <actuator_number>1</actuator_number>
+                <turningDirection>ccw</turningDirection>
+                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
+                <motorConstant>3e-5</motorConstant>
+                <momentConstant>1.1e-6</momentConstant>
+                <motorType>velocity</motorType>
+            </plugin>
+
+            <plugin 
+                filename="ignition-gazebo-multicopter-motor-model-system" 
+                name="ignition::gazebo::systems::MulticopterMotorModel">
+                <jointName>motor3_spinner3_joint</jointName>
+                <linkName>spinner_link_2</linkName>
+                <actuator_number>2</actuator_number>
+                <turningDirection>cw</turningDirection>
+                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
+                <motorConstant>3e-5</motorConstant>
+                <momentConstant>1.1e-6</momentConstant>
+                <motorType>velocity</motorType>
+            </plugin>
+
+            <plugin 
+                filename="ignition-gazebo-multicopter-motor-model-system" 
+                name="ignition::gazebo::systems::MulticopterMotorModel">
+                <jointName>motor4_spinner4_joint</jointName>
+                <linkName>spinner_link</linkName>
+                <actuator_number>3</actuator_number>
+                <turningDirection>ccw</turningDirection>
+                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
+                <motorConstant>3e-5</motorConstant>
+                <momentConstant>1.1e-6</momentConstant>
+                <motorType>velocity</motorType>
             </plugin>
         </xacro:if>
         <xacro:unless value="$(arg is_ignition)">
             <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
                 <parameters>$(find drone_controllers)/config/ros2_control_parameters.yaml</parameters>
             </plugin>
-            <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu">
+            <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu"/>
+            <plugin 
+                filename="gz-sim-multicopter-motor-model-system" 
+                name="gz::sim::systems::MulticopterMotorModel">
+                <jointName>motor1_spinner1_joint</jointName>
+                <linkName>spinner_link_3</linkName>
+                <actuator_number>0</actuator_number>
+                <turningDirection>cw</turningDirection>
+                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
+                <motorSpeedPubTopic>/motor0/speed</motorSpeedPubTopic>
+                <motorConstant>3e-5</motorConstant>
+                <momentConstant>1.1e-6</momentConstant>
+                <motorType>velocity</motorType>
             </plugin>
-            <plugin filename="librotor_thrust_system.so" name="rotor_thrust::RotorThrustSystem">
+
+            <plugin 
+                filename="gz-sim-multicopter-motor-model-system" 
+                name="gz::sim::systems::MulticopterMotorModel">
+                <jointName>motor2_spinner2_joint</jointName>
+                <linkName>spinner_link_1</linkName>
+                <actuator_number>1</actuator_number>
+                <turningDirection>ccw</turningDirection>
+                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
+                <motorSpeedPubTopic>/motor1/speed</motorSpeedPubTopic>
+                <motorConstant>3e-5</motorConstant>
+                <momentConstant>1.1e-6</momentConstant>
+                <motorType>velocity</motorType>
+            </plugin>
+
+            <plugin 
+                filename="gz-sim-multicopter-motor-model-system" 
+                name="gz::sim::systems::MulticopterMotorModel">
+                <jointName>motor3_spinner3_joint</jointName>
+                <linkName>spinner_link_2</linkName>
+                <actuator_number>2</actuator_number>
+                <turningDirection>cw</turningDirection>
+                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
+                <motorSpeedPubTopic>/motor2/speed</motorSpeedPubTopic>
+                <motorConstant>3e-5</motorConstant>
+                <momentConstant>1.1e-6</momentConstant>
+                <motorType>velocity</motorType>
+            </plugin>
+
+            <plugin 
+                filename="gz-sim-multicopter-motor-model-system" 
+                name="gz::sim::systems::MulticopterMotorModel">
+                <jointName>motor4_spinner4_joint</jointName>
+                <linkName>spinner_link</linkName>
+                <actuator_number>3</actuator_number>
+                <turningDirection>ccw</turningDirection>
+                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
+                <motorSpeedPubTopic>/motor3/speed</motorSpeedPubTopic>
+                <motorConstant>3e-5</motorConstant>
+                <momentConstant>1.1e-6</momentConstant>
+                <motorType>velocity</motorType>
             </plugin>
         </xacro:unless>
     </gazebo>

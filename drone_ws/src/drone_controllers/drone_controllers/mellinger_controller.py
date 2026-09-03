@@ -3,7 +3,7 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import TwistStamped
 from nav_msgs.msg import Odometry
-from std_msgs.msg import Float64MultiArray
+from actuator_msgs.msg import Actuators
 from numpy import cross, dot, linalg, array, eye, zeros, transpose
 from math import cos, sin, sqrt
 from scipy.spatial.transform import Rotation
@@ -47,7 +47,7 @@ class MellingerController(Node):
         self.Kw_ = eye(3) * self.get_parameter("Kw").get_parameter_value().double_value
         # Controls the angular velocity correction, larger parameter means more correction
 
-        self.motor_pub_ = self.create_publisher(Float64MultiArray,"/simple_velocity_controller/commands",10)
+        self.motor_pub_ = self.create_publisher(Actuators,"/simple_velocity_controller/commands",10)
         # Sends the angular velocities to Gazebo [s1, s2, s3, s4]
         self.ground_truth_sub_ = self.create_subscription(Odometry, "mellinger_controller/odom",self.odomCallback, 10)
         # Receives s = {position, velocity, quaternion, angular velocity}
@@ -74,9 +74,10 @@ class MellingerController(Node):
         self.r_T_ = zeros([3]) # Desired position
         self.yaw_T_ = 0 # Desired yaw
         self.yaw_rate_T_ = 0.0# Desired yaw rate
+        self.log_iterator = 0
 
         self.timer_ = self.create_timer(0.01, self.controlLoop) # Timer callbacks take no msg arguement
-        self.log_iterator = 0
+        
         
 
 
@@ -128,8 +129,9 @@ class MellingerController(Node):
             self.get_logger().info(f"rotor_speed_sq = {rotor_speed_sq}")
             self.get_logger().info(f"rotor_speeds = {rotor_speeds}")
 
-        msg = Float64MultiArray()
-        msg.data = rotor_speeds.tolist()
+        msg = Actuators()
+        rs = rotor_speeds.tolist()
+        msg.velocity = [rs[0],rs[1],rs[2],rs[3]]
         self.motor_pub_.publish(msg)
 
     def odomCallback(self, msg:Odometry):

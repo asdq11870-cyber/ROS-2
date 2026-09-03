@@ -17,23 +17,6 @@ find_package(yaml-cpp REQUIRED)
 # find_package(<dependency> REQUIRED)
 ament_python_install_package(${PROJECT_NAME})
 
-
-add_library(rotor_thrust_system SHARED
-  src/rotor_thrust_system.cpp
-)
-
-target_link_libraries(rotor_thrust_system
-  gz-sim8::gz-sim8 yaml-cpp
-)
-
-target_include_directories(rotor_thrust_system PRIVATE
-  /opt/ros/jazzy/opt/gz_sim_vendor/include/gz/sim8
-)
-
-install(TARGETS rotor_thrust_system
-  LIBRARY DESTINATION lib
-)
-
 install(
   DIRECTORY meshes urdf launch rviz worlds
   DESTINATION share/${PROJECT_NAME}
