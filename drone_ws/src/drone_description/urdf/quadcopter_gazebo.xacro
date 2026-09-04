@@ -16,7 +16,7 @@
                 <linkName>spinner_link_3</linkName>
                 <actuator_number>0</actuator_number>
                 <turningDirection>cw</turningDirection>
-                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
+                <commandSubTopic>simple_velocity_controller/commands</commandSubTopic>
                 <motorConstant>3e-5</motorConstant>
                 <momentConstant>1.1e-6</momentConstant>
                 <motorType>velocity</motorType>
@@ -30,7 +30,7 @@
                 <linkName>spinner_link_1</linkName>
                 <actuator_number>1</actuator_number>
                 <turningDirection>ccw</turningDirection>
-                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
+                <commandSubTopic>simple_velocity_controller/commands</commandSubTopic>
                 <motorConstant>3e-5</motorConstant>
                 <momentConstant>1.1e-6</momentConstant>
                 <motorType>velocity</motorType>
@@ -44,7 +44,7 @@
                 <linkName>spinner_link_2</linkName>
                 <actuator_number>2</actuator_number>
                 <turningDirection>cw</turningDirection>
-                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
+                <commandSubTopic>simple_velocity_controller/commands</commandSubTopic>
                 <motorConstant>3e-5</motorConstant>
                 <momentConstant>1.1e-6</momentConstant>
                 <motorType>velocity</motorType>
@@ -58,7 +58,7 @@
                 <linkName>spinner_link</linkName>
                 <actuator_number>3</actuator_number>
                 <turningDirection>ccw</turningDirection>
-                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
+                <commandSubTopic>simple_velocity_controller/commands</commandSubTopic>
                 <motorConstant>3e-5</motorConstant>
                 <momentConstant>1.1e-6</momentConstant>
                 <motorType>velocity</motorType>
@@ -77,8 +77,8 @@
                 <linkName>spinner_link_3</linkName>
                 <actuator_number>0</actuator_number>
                 <turningDirection>cw</turningDirection>
-                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
-                <motorSpeedPubTopic>/motor0/speed</motorSpeedPubTopic>
+                <commandSubTopic>simple_velocity_controller/commands</commandSubTopic>
+                <motorSpeedPubTopic>motor0/speed</motorSpeedPubTopic>
                 <motorConstant>3e-5</motorConstant>
                 <momentConstant>1.1e-6</momentConstant>
                 <motorType>velocity</motorType>
@@ -92,8 +92,8 @@
                 <linkName>spinner_link_1</linkName>
                 <actuator_number>1</actuator_number>
                 <turningDirection>ccw</turningDirection>
-                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
-                <motorSpeedPubTopic>/motor1/speed</motorSpeedPubTopic>
+                <commandSubTopic>simple_velocity_controller/commands</commandSubTopic>
+                <motorSpeedPubTopic>motor1/speed</motorSpeedPubTopic>
                 <motorConstant>3e-5</motorConstant>
                 <momentConstant>1.1e-6</momentConstant>
                 <motorType>velocity</motorType>
@@ -107,8 +107,8 @@
                 <linkName>spinner_link_2</linkName>
                 <actuator_number>2</actuator_number>
                 <turningDirection>cw</turningDirection>
-                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
-                <motorSpeedPubTopic>/motor2/speed</motorSpeedPubTopic>
+                <commandSubTopic>simple_velocity_controller/commands</commandSubTopic>
+                <motorSpeedPubTopic>motor2/speed</motorSpeedPubTopic>
                 <motorConstant>3e-5</motorConstant>
                 <momentConstant>1.1e-6</momentConstant>
                 <motorType>velocity</motorType>
@@ -122,8 +122,8 @@
                 <linkName>spinner_link</linkName>
                 <actuator_number>3</actuator_number>
                 <turningDirection>ccw</turningDirection>
-                <commandSubTopic>/simple_velocity_controller/commands</commandSubTopic>
-                <motorSpeedPubTopic>/motor3/speed</motorSpeedPubTopic>
+                <commandSubTopic>simple_velocity_controller/commands</commandSubTopic>
+                <motorSpeedPubTopic>motor3/speed</motorSpeedPubTopic>
                 <motorConstant>3e-5</motorConstant>
                 <momentConstant>1.1e-6</momentConstant>
                 <motorType>velocity</motorType>
