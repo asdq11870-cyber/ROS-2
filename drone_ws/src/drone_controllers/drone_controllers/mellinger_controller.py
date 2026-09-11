@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from geometry_msgs.msg import TwistStamped
+from geometry_msgs.msg import TwistStamped, TransformStamped
 from nav_msgs.msg import Odometry
 from actuator_msgs.msg import Actuators
 from numpy import cross, dot, linalg, array, eye, zeros, transpose
 from math import cos, sin, sqrt
+from tf2_ros import TransformBroadcaster
 from scipy.spatial.transform import Rotation
 
 
@@ -72,15 +73,17 @@ class MellingerController(Node):
 
         self.vel_T_ = zeros([3]) # Desired velocity
         self.r_T_ = zeros([3]) # Desired position
-        self.yaw_T_ = 0 # Desired yaw
+        self.yaw_T_ = 0.0 # Desired yaw
         self.yaw_rate_T_ = 0.0# Desired yaw rate
         self.log_iterator = 0
 
+        self.broadcaster_ = TransformBroadcaster(self)
+        self.transform_stamp_ = TransformStamped()
+        self.transform_stamp_.header.frame_id = "odom"
+        self.transform_stamp_.child_frame_id = "root"
+
         self.timer_ = self.create_timer(0.01, self.controlLoop) # Timer callbacks take no msg arguement
         
-        
-
-
     def controlLoop(self): # Function that executes the full mellinger pipeline
         self.log_iterator += 1
         self.yaw_T_ += self.yaw_rate_T_ * 0.01
@@ -117,6 +120,7 @@ class MellingerController(Node):
             sqrt(max(0,rotor_speed_sq[2])),
             sqrt(max(0,rotor_speed_sq[3]))
         ])
+
         if self.log_iterator % 20 == 0 and self.show_logs:
             self.get_logger().info(f"R_ =\n{self.R_}")
             self.get_logger().info(f"eR = {eR}")
@@ -144,6 +148,18 @@ class MellingerController(Node):
         self.R_ = Rotation.from_quat([msg.pose.pose.orientation.x, msg.pose.pose.orientation.y, msg.pose.pose.orientation.z,
                             msg.pose.pose.orientation.w]).as_matrix()
         # Current quaternion data from the Odometry data in Gazebo or Rviz
+        quaternion = [msg.pose.pose.orientation.x, msg.pose.pose.orientation.y, msg.pose.pose.orientation.z,
+                            msg.pose.pose.orientation.w]
+        
+        self.transform_stamp_.transform.translation.x = self.r_[0]
+        self.transform_stamp_.transform.translation.y = self.r_[1]
+        self.transform_stamp_.transform.translation.z = self.r_[2]
+        self.transform_stamp_.transform.rotation.x = quaternion[0]
+        self.transform_stamp_.transform.rotation.y = quaternion[1]
+        self.transform_stamp_.transform.rotation.z = quaternion[2]
+        self.transform_stamp_.transform.rotation.w = quaternion[3]
+        self.transform_stamp_.header.stamp = self.get_clock().now().to_msg()
+        self.broadcaster_.sendTransform(self.transform_stamp_)
 
     def velCallback(self, msg:TwistStamped):
         self.vel_T_ = array([msg.twist.linear.x, msg.twist.linear.y, msg.twist.linear.z])

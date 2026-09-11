@@ -14,12 +14,14 @@ find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(actuator_msgs REQUIRED)
+find_package(Eigen3 REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 ament_python_install_package(${PROJECT_NAME})
 
 include_directories(include)
+include_directories(${EIGEN_INCLUDE_DIR})
 
 install(
   DIRECTORY include

@@ -72,7 +72,7 @@
             <plugin 
                 filename="gz-sim-multicopter-motor-model-system" 
                 name="gz::sim::systems::MulticopterMotorModel">
-                <robotNamespace>quadcopter</robotNamespace>
+                <robotNamespace>/quadcopter</robotNamespace>
                 <jointName>motor1_spinner1_joint</jointName>
                 <linkName>spinner_link_3</linkName>
                 <actuator_number>0</actuator_number>
@@ -87,7 +87,7 @@
             <plugin 
                 filename="gz-sim-multicopter-motor-model-system" 
                 name="gz::sim::systems::MulticopterMotorModel">
-                <robotNamespace>quadcopter</robotNamespace>
+                <robotNamespace>/quadcopter</robotNamespace>
                 <jointName>motor2_spinner2_joint</jointName>
                 <linkName>spinner_link_1</linkName>
                 <actuator_number>1</actuator_number>
@@ -102,7 +102,7 @@
             <plugin 
                 filename="gz-sim-multicopter-motor-model-system" 
                 name="gz::sim::systems::MulticopterMotorModel">
-                <robotNamespace>quadcopter</robotNamespace>
+                <robotNamespace>/quadcopter</robotNamespace>
                 <jointName>motor3_spinner3_joint</jointName>
                 <linkName>spinner_link_2</linkName>
                 <actuator_number>2</actuator_number>
@@ -117,7 +117,7 @@
             <plugin 
                 filename="gz-sim-multicopter-motor-model-system" 
                 name="gz::sim::systems::MulticopterMotorModel">
-                <robotNamespace>quadcopter</robotNamespace>
+                <robotNamespace>/quadcopter</robotNamespace>
                 <jointName>motor4_spinner4_joint</jointName>
                 <linkName>spinner_link</linkName>
                 <actuator_number>3</actuator_number>
