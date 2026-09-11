@@ -11,11 +11,11 @@ joy_teleop:
 
       axis_mappings:
         twist-linear-x:
-          axis: 1
+          axis: 0
           scale: 0.1
           offset: 0.0
         twist-linear-y:
-          axis: 0
+          axis: 1
           scale: 0.1
           offset: 0.0
         twist-linear-z:

@@ -7,8 +7,8 @@
 #include <geometry_msgs/msg/transform_stamped.hpp>
 #include <actuator_msgs/msg/actuators.hpp>
 #include <tf2_ros/transform_broadcaster.hpp>
+#include <algorithm>
 #include <Eigen/Core>
-#include <numpy>
 
 class MellingerController : public rclcpp::Node{
 public:
@@ -34,6 +34,16 @@ private:
 
     Eigen::Matrix4d M_;
     Eigen::Matrix4d inv_M_;
+
+    Eigen::RowVector3d r_ = Eigen::RowVector3d::Zero();
+    Eigen::RowVector3d vel_ = Eigen::RowVector3d::Zero();
+    Eigen::Matrix3d R_ = Eigen::Matrix3d::Zero();
+    Eigen::RowVector3d w_ = Eigen::RowVector3d::Zero();
+
+    Eigen::RowVector3d r_T_ = Eigen::RowVector3d::Zero();
+    Eigen::RowVector3d vel_T_ = Eigen::RowVector3d::Zero();
+    double yaw_T_ = 0.0;
+    double yaw_rate_T_ = 0.0;
 
     std::unique_ptr<tf2_ros::TransformBroadcaster> broadcaster_;
     geometry_msgs::msg::TransformStamped transform_stamped_;

@@ -48,7 +48,7 @@ class MellingerController(Node):
         self.Kw_ = eye(3) * self.get_parameter("Kw").get_parameter_value().double_value
         # Controls the angular velocity correction, larger parameter means more correction
 
-        self.motor_pub_ = self.create_publisher(Actuators,"/simple_velocity_controller/commands",10)
+        self.motor_pub_ = self.create_publisher(Actuators,"/quadcopter/simple_velocity_controller/commands",10)
         # Sends the angular velocities to Gazebo [s1, s2, s3, s4]
         self.ground_truth_sub_ = self.create_subscription(Odometry, "mellinger_controller/odom",self.odomCallback, 10)
         # Receives s = {position, velocity, quaternion, angular velocity}
@@ -76,6 +76,7 @@ class MellingerController(Node):
         self.yaw_T_ = 0.0 # Desired yaw
         self.yaw_rate_T_ = 0.0# Desired yaw rate
         self.log_iterator = 0
+        self.cmd_vel_received = False
 
         self.broadcaster_ = TransformBroadcaster(self)
         self.transform_stamp_ = TransformStamped()
@@ -85,6 +86,7 @@ class MellingerController(Node):
         self.timer_ = self.create_timer(0.01, self.controlLoop) # Timer callbacks take no msg arguement
         
     def controlLoop(self): # Function that executes the full mellinger pipeline
+        if not self.cmd_vel_received: return
         self.log_iterator += 1
         self.yaw_T_ += self.yaw_rate_T_ * 0.01
         # Desired yaw
@@ -110,9 +112,8 @@ class MellingerController(Node):
         W_T[1] = 0.0 # dot(h_w,self.r_T_[:,0])
         W_T[2] = (W_T[1] * dot(Rdes[:,2], cross(array([0,0,1]), h_T)) + self.yaw_rate_T_ * dot(h_T, Rdes[:,0])) / dot(cross(array([0,0,1]), h_T), Rdes[:,1])        
         eW = self.w_ - W_T
-        Tdes = -self.Kr_ @ eR - self.Kw_ @ eW
-        tau_body = transpose(self.R_) @ Tdes
-        rotor_speed_sq = self.M_inv_ @ array([Pdes, tau_body[0],tau_body[1],tau_body[2]])
+        tdes = -self.Kr_ @ eR - self.Kw_ @ eW
+        rotor_speed_sq = self.M_inv_ @ array([Pdes, tdes[0],tdes[1],tdes[2]])
         
         rotor_speeds = array([
             sqrt(max(0,rotor_speed_sq[0])),
@@ -166,6 +167,7 @@ class MellingerController(Node):
         # Array of the desired velocities in the xyz axis' 
         self.yaw_rate_T_ = msg.twist.angular.z
         # Desired yaw rate
+        self.cmd_vel_received = True
 
 
 def main(args=None):

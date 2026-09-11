@@ -19,18 +19,14 @@ def generate_launch_description():
         parameters=[os.path.join(get_package_share_directory("drone_controllers"), "config", "joy_config.yaml")],
         output="screen"
     )
-    joy_teleop = TimerAction(
-        period=2.0,
-        actions=[
-            Node(
-                package="joy_teleop",
-                executable="joy_teleop",
-                name="joy_teleop",
-                parameters=[os.path.join(get_package_share_directory("drone_controllers"), "config", "joy_teleop.yaml")],
-                output="screen"
-            )
-        ]
+    joy_teleop = Node(
+        package="joy_teleop",
+        executable="joy_teleop",
+        name="joy_teleop",
+        parameters=[os.path.join(get_package_share_directory("drone_controllers"), "config", "joy_teleop.yaml")],
+        output="screen"
     )
+
   
 
     use_python = LaunchConfiguration("use_python")

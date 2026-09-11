@@ -2,7 +2,10 @@
 #include <Eigen/Geometry>
 using std::placeholders::_1;
 
-MellingerController::MellingerController(const std::string& name) : Node(name){
+MellingerController::MellingerController(const std::string& name): 
+    Node(name)
+
+{
     declare_parameter("mass",0.138);
     declare_parameter("g",9.81);
     declare_parameter("L",0.12);
@@ -23,40 +26,73 @@ MellingerController::MellingerController(const std::string& name) : Node(name){
     Kv = get_parameter("Kv").as_double() * Eigen::Matrix3d::Identity();
     Kr = get_parameter("Kr").as_double() * Eigen::Matrix3d::Identity();
     Kw = get_parameter("Kw").as_double() * Eigen::Matrix3d::Identity();
-    show_logs = get_parameter("show_logs").as_double();
+    show_logs = get_parameter("show_logs").as_boolean();
 
     motor_pub_ = create_publisher<actuator_msgs::msg::Actuators>("/simple_velocity_controller/commands",10);
-    ground_truth_sub_ = create_subscription<nav_msgs::msg::Odometry>("/mellinger_controller/odom",10,std::bind(&MellingerControlller::odomCallback,this,_1));
-    velocity_sub_ = create_subscription<geometry_msg::msg::TwistStamped>("/mellinger_controller/cmd_vel",10,std::bind(&MellingerController::velCallback,this,_1));
+    ground_truth_sub_ = create_subscription<nav_msgs::msg::Odometry>("/mellinger_controller/odom",10,std::bind(&MellingerController::odomCallback,this,_1));
+    velocity_sub_ = create_subscription<geometry_msgs::msg::TwistStamped>("/mellinger_controller/cmd_vel",10,std::bind(&MellingerController::velCallback,this,_1));
     
     broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(this);
-    transform_stamped_.header.frame = "odom";
-    transform_stamped.child_frame_id = "root";
+    transform_stamped_.header.frame_id = "odom";
+    transform_stamped_.child_frame_id = "root";
     int log_iterator = 0;
 
     M_ << kF << kF << kF << kF << 0 << -(kF*L) << 0 << (kF*L) << -(kF*L) << 0 << (kF*L) << 0 << -kM << kM << -kM << kM
     inv_M_ = M_.inverse();
 
-    Eigen::Vector3d r_ = Eigen::Vector3d::Zero();
-    Eigen::Vector3d vel_ = Eigen::Vector3d::Zero();
-    Eigen::Matrix3d R_ = Eigen::Matrix3d::Zero();
-    Eigen::Vector3d w_ = Eigen::Vector3d::Zero();
-
-    Eigen::Vector3d r_T_ = Eigen::Vector3d::Zero();
-    Eigen::Vector3d vel_T_ = Eigen::Vector3d::Zero();
-    double yaw_ = 0.0;
-    double yaw_T_ = 0.0;
-
     auto timer = rclcpp::create_timer(this, this->get_clock(), 0.01, std::bind(&MellingerController::controlLoop, this, _1));
 }
 
 void MellingerController::controlLoop(){
+    log_iterator += 1;
+    yaw_T_ += yaw_rate_T_ * 0.01;
+    Eigen::Vector3d i_B = R_.col(0);
+    Eigen::Vector3d h{i_B[0], i_B[1], 0};
+    h /= h.norm();
+    Eigen::RowVector3d h_T{std::cos(yaw_T_), std::sin(yaw_T_), 0.0};
+
+    Eigen::RowVector3d weight{0.0, 0.0, mass * g};
+    auto Fdes = -Kp * (r_ - r_T_) -Kv * (vel_ - vel_T_) + weight;
+    auto Pdes = Fdes.dot(R_.col(2));
+    Eigen::Matrix3d Rdes = Eigen::Matrix3d::Zero();
+    Eigen::RowVector3d k{0.0, 0.0, 1.0};
+    Rdes.col(2) = Fdes / Fdes.norm();
+    Rdes.col(0) = Rdes.col(2).cross(k.cross(h_T));
+    Rdes.col(1) = Rdes.col(2).cross(Rdes.col(0));
+
+    Eigen::Matrix3d temp_arr = Rdes.transpose() * R_ - R_.transpose() * Rdes;
+    Eigen::RowVector3d eR{temp_arr(1,0),temp_arr(0,2),temp_arr(2,1)};
+    eR *= 0.5;
+    Eigen::RowVector3d eW = w_;
+
+    auto Tdes = -Kr * eR - Kw * eW;
+    auto tau_body = R_.transpose() * Tdes;
+    Eigen::Vector4d temp_arr_2{Pdes, tau_body.row(0), tau_body.row(1), tau_body.row(2)};
+    auto rotor_speed_sq_ = inv_M_ * temp_arr_2;
+    double rs[4]{std::max(0.0,rotor_speed_sq_.row(0)),std::max(0.0,rotor_speed_sq_.row(1)),std::max(0.0,rotor_speed_sq_.row(2),
+    ),std::max(0.0,rotor_speed_sq_.row(3))};
+
+    if(log_iterator % 20 == 0 && show_logs){
+        RCLCPP_INTO_STREAM(get_logger(),"R_ = "<< R_);
+        RCLCPP_INTO_STREAM(get_logger(),"eR = "<< eR);
+        RCLCPP_INTO_STREAM(get_logger(),"eW = "<< eW);
+        RCLCPP_INTO_STREAM(get_logger(),"Fdes = "<< Fdes);
+        RCLCPP_INTO_STREAM(get_logger(),"Pdes = "<< Pdes);
+        RCLCPP_INTO_STREAM(get_logger(),"Tdes = "<< Tdes);
+        RCLCPP_INTO_STREAM(get_logger(),"tau_body = "<< tau_body);
+        RCLCPP_INTO_STREAM(get_logger(),"rotor_speed_sq_ = "<< rotor_speed_sq_);
+        RCLCPP_INTO_STREAM(get_logger(),"rotor_speeds = "<< rs);
+    }
+
+    actuator_msgs::msg::Actuators msg;
+    msg.velocity(rs[0],rs[1],rs[2],rs[3]);
+    motor_pub_->publish(msg);
 
 }
 
 void MellingerController::velCallback(const geometry_msgs::msg::TwistStamped& msg){
     r_T_ << msg.twist.linear.x << msg.twist.linear.y << msg.twist.linear.z
-    vel_T_ << msg.twist.angular.z
+    yaw_T_ << msg.twist.angular.z
 }
 
 void MellingerController::odomCallback(const nav_msgs::msg::Odometry& msg){

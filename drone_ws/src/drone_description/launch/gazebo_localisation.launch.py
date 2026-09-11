@@ -79,7 +79,7 @@ def generate_launch_description():
         arguments=[
             "/imu@sensor_msgs/msg/Imu[gz.msgs.IMU",
             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
-            "/simple_velocity_controller/commands@actuator_msgs/msg/Actuators[gz.msgs.Actuators"
+            "/quadcopter/simple_velocity_controller/commands@actuator_msgs/msg/Actuators]gz.msgs.Actuators"
         ],
         remappings=[
             ("/imu","/imu/out")
