@@ -83,6 +83,7 @@ class MellingerController(Node):
         self.transform_stamp_.header.frame_id = "odom"
         self.transform_stamp_.child_frame_id = "root"
 
+        self.get_logger().info("Python Implementation of Mellinger Controller Running...")
         self.timer_ = self.create_timer(0.01, self.controlLoop) # Timer callbacks take no msg arguement
         
     def controlLoop(self): # Function that executes the full mellinger pipeline
@@ -104,7 +105,7 @@ class MellingerController(Node):
         Rdes[:,1] = cross(Rdes[:,2],Rdes[:,0])
 
         temp_arr = (transpose(Rdes) @ self.R_ - transpose(self.R_) @ Rdes)
-        eR = 0.5 * array([temp_arr[1,0],temp_arr[0,2],temp_arr[2,1]])
+        eR = 0.5 * array([temp_arr[2,1],temp_arr[0,2],temp_arr[1,0]])
 
         h_w = zeros(3)
         W_T = zeros(3)
@@ -122,7 +123,7 @@ class MellingerController(Node):
             sqrt(max(0,rotor_speed_sq[3]))
         ])
 
-        if self.log_iterator % 20 == 0 and self.show_logs:
+        if self.log_iterator % 30 == 0 and self.show_logs:
             self.get_logger().info(f"R_ =\n{self.R_}")
             self.get_logger().info(f"eR = {eR}")
             self.get_logger().info(f"eW = {eW}")

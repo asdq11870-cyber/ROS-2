@@ -9,7 +9,7 @@ from launch.conditions import IfCondition, UnlessCondition
 def generate_launch_description():
 
     use_python_arg = DeclareLaunchArgument(
-        name="use_python", default_value="True"
+        name="use_python", default_value="true"
     )
     
     joy_node = Node(

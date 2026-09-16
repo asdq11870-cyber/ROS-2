@@ -40,6 +40,7 @@ MellingerController::MellingerController(const std::string& name):
     M_ << kF << kF << kF << kF << 0 << -(kF*L) << 0 << (kF*L) << -(kF*L) << 0 << (kF*L) << 0 << -kM << kM << -kM << kM
     inv_M_ = M_.inverse();
 
+    RCLCPP_INTO_STREAM(get_logger(), "C++ Implemenation of Mellinger Controller Running...")
     auto timer = rclcpp::create_timer(this, this->get_clock(), 0.01, std::bind(&MellingerController::controlLoop, this, _1));
 }
 
